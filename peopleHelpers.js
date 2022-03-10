@@ -44,7 +44,6 @@ async function getAllPeople() {
   await (async function getNextPage(page = 1){
     let {data} = await axios.get(`https://swapi.dev/api/people/?page=${page}`);
     people.push(...data.results);
-    console.log(people);
     if(data.next) return await getNextPage(page += 1);
     return;
   })()

@@ -22,7 +22,6 @@ async function getAllPlanets() {
   await (async function getNextPage(page = 1){
     let {data} = await axios.get(`https://swapi.dev/api/planets/?page=${page}`);
     planets.push(...data.results);
-    console.log(planets.length);
     if(data.next) return await getNextPage(page += 1);
     return;
   })()

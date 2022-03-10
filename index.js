@@ -11,10 +11,10 @@ app.use(express.json());
 app.get('/people/:sortBy?', async (req, res) => {
   try {
     let sortBy = setSortByValue(req);
-    let swPeople = await getAllPeople();
-    swPeople = sortPeople(swPeople, sortBy);
+    let people = await getAllPeople();
+    people = sortPeople(people, sortBy);
 
-    res.status(200).send(swPeople);
+    res.status(200).send(people);
   }
   catch (err) {
     console.log(err);
@@ -23,10 +23,10 @@ app.get('/people/:sortBy?', async (req, res) => {
 
 app.get('/planets', async (req, res) => {
   try {
-    let swPlanets = await getAllPlanets();
-    swPlanets = await replaceResidentURLsWithNames(swPlanets);
+    let planets = await getAllPlanets();
+    planets = await replaceResidentURLsWithNames(planets);
     
-    res.status(200).send(swPlanets);
+    res.status(200).send(planets);
   }
   catch (err) {
     console.log(err);
